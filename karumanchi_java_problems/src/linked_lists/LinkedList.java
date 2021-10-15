@@ -56,17 +56,25 @@ public class LinkedList {
         Node newNode = new Node(data);
         newNode.setNext(null);
 
-        // traverse the list till x-1
-        int temp = 1;
         Node tempNode = head;
-        while (temp < x) {
-            temp++;
+        for(int i=1;i<x; i++){
             tempNode = tempNode.getNext();
         }
+
         newNode.setNext(tempNode.getNext());
         tempNode.setNext(newNode);
 
         length ++;
+    }
+
+    private synchronized void deleteNthPosition(int pos){
+        Node tempPtr = head;
+        for(int i=1; i<pos;i++){
+            tempPtr = tempPtr.getNext();
+        }
+        Node toBeDeleted = tempPtr.getNext();
+        tempPtr.setNext(tempPtr.getNext().getNext());
+        toBeDeleted.setNext(null);
     }
 
     // traverse the whole list
@@ -104,6 +112,9 @@ public class LinkedList {
 
 
         linkedList.insertAtNthPosition(-200, 0);
+        linkedList.traverse();
+
+        linkedList.deleteNthPosition(2);
         linkedList.traverse();
 
 
