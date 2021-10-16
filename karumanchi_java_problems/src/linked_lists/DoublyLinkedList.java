@@ -44,6 +44,16 @@ public class DoublyLinkedList {
         tmpPtr.setNext(newNode);
     }
 
+    private void deleteNodesAtNthPosition(int pos){
+        // check for edge case
+        DLLNode tempNode = head;
+        for(int i=1; i<pos;i++)
+            tempNode = tempNode.getNext();
+
+        tempNode.setNext(tempNode.getNext().getNext());
+        tempNode.getNext().setPrevious(tempNode);
+    }
+
     /**
      * Note traverse till tail only.
      */
@@ -51,7 +61,7 @@ public class DoublyLinkedList {
         System.out.println("STARTED PRINTING");
         DLLNode temp = head;
         while(temp.getNext() != tail){
-            System.out.println(temp.getData() + " ");
+            System.out.print(temp.getData() + "->");
             temp = temp.getNext();
         }
 
@@ -65,14 +75,15 @@ public class DoublyLinkedList {
         doublyLinkedList.insertAtBeginning(new DLLNode(300));
         doublyLinkedList.insertAtBeginning(new DLLNode(400));
 
-
-        // 100 -> 200 -> 300 -> 400
+        // 400->300->1000->200->100
         doublyLinkedList.printAllNodes();
         doublyLinkedList.insertAtNthPosition(2, new DLLNode(1000));
         doublyLinkedList.printAllNodes();
 
-
-        // insert at nth Node
+        // delete node at nth pos
+        // 400->300->1000->200->100
+        doublyLinkedList.deleteNodesAtNthPosition(2);
+        doublyLinkedList.printAllNodes();
 
     }
 
