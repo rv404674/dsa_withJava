@@ -4,7 +4,7 @@
 
 ```bash
 javac src/basics/ArraysBasics.java
-java -cp src/ basics.ArraysBasics
+java -cp src/ basics.array.ArraysBasics
 ```
 
 with testcases
