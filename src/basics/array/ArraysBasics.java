@@ -1,8 +1,26 @@
-package basics;
+package basics.array;
 
 import java.util.Arrays;
 
 public class ArraysBasics {
+    public void basic2DArray(){
+        int[][] array = new int[4][5];
+        int i,j,k=0;
+
+        for (i = 0; i < 4; i++) {
+            for (j = 0; j < 5; j++) {
+                array[i][j] = k++;
+            }
+        }
+
+        for (i = 0; i < 4; i++) {
+            for (j = 0; j < 5; j++) {
+                System.out.println(array[i][j]);
+            }
+        }
+
+    }
+
     public void int2DArray(){
         int[][] intArray = new int[3][3];
 
@@ -33,6 +51,7 @@ public class ArraysBasics {
 
     public static void main(String[] args){
         ArraysBasics arraysBasics = new ArraysBasics();
+        arraysBasics.basic2DArray();
         arraysBasics.int2DArray();
 
         arraysBasics.string2DArray();
