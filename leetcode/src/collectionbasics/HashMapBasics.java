@@ -1,8 +1,6 @@
 package collectionbasics;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.*;
 
 public class HashMapBasics {
 
