@@ -3,6 +3,9 @@ package graphs.dfsPractice;
 import java.util.Iterator;
 import java.util.LinkedList;
 
+/*
+NOTE: we need to change the implementation to a HashMap, if we get alphabetical nodes.
+ */
 class Graph{
     private int V;
     private LinkedList<Integer>[] adjancyList;
