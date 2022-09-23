@@ -7,6 +7,8 @@ package trees.basics;
  * an in order traversal would give a SORTED output.
  * NOTE: for a bst insert/delete/search - O(logn) average
  * for skewed trees - O(N) in worst.
+ *
+ * https://www.softwaretestinghelp.com/binary-search-tree-in-java/
  */
 
 public class BSTClass {
@@ -15,6 +17,8 @@ public class BSTClass {
     BSTClass(){
         this.root = null;
     }
+
+    // TODO: implement delete as well.
 
     // search for a node
     public boolean searchKey(BinaryTreeNode node, int x){
