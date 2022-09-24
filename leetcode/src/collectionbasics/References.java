@@ -2,8 +2,24 @@ package collectionbasics;
 
 import java.util.Arrays;
 
+class Box{
+    int height;
+    int width;
+    int length;
+}
+
 public class References {
     public static void main(String[] args){
+        Box box = new Box();
+        box.height = 20;
+
+        Box b2 = box;
+        b2.height = 100;
+
+        System.out.println(box.height);
+
+
+        System.out.println(box);
         // NOTE: References
         int[] a1 = {1,2,3};
         int[] a2 = {1,2,3};
