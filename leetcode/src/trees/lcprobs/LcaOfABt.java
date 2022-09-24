@@ -1,57 +1,96 @@
-package trees.basics;
+package trees.lcprobs;
 
+import java.util.ArrayList;
 import java.util.ArrayList;
 import java.util.List;
 
-class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
-
-    TreeNode(int x) {
-        val = x;
-    }
-}
+//class TreeNode {
+//    int val;
+//    TreeNode left;
+//    TreeNode right;
+//
+//    TreeNode(int x) {
+//        val = x;
+//    }
+//}
     
-public class LcaBt {
-    public static void traverseInorderlyWay(TreeNode root, List<TreeNode> path, TreeNode x) {
-        // traverse inorder
-        if(root == x)
-            return;
-
-        if(root != null){
-            path.add(root);
-            traverseInorderlyWay(root.left, path, x);
-            traverseInorderlyWay(root.right, path, x);
-        }
-    }
-
+public class LcaOfABt {
     /**
-     * Wrote Myself
+     * Apprach1 - Find path to both and nodes and then it is easy.
      * time - 3*O(n)
      * space - 2*O(n)
      */
-    public static TreeNode lowestCommonAncestorAppr1(TreeNode root, TreeNode p, TreeNode q) {
-        List<TreeNode> list1 = new ArrayList<>();
-        traverseInorderlyWay(root, list1, p);
 
-        List<TreeNode> list2 = new ArrayList<>();
-        traverseInorderlyWay(root, list2, q);
+    public static Boolean findPathToNode(TreeNode node, ArrayList<TreeNode> path, int x) {
+        if(node == null)
+            return false;
+
+        path.add(node);
+        if(node.val == x)
+            return true;
+
+        boolean flag1 = findPathToNode(node.left, path, x);
+        boolean flag2 = findPathToNode(node.right, path, x);
+
+        if (flag1 == false && flag2 == false){
+            // NOTE: for remove() time complexity for remove last element if - O(1)
+            // for any other index it is O(n)
+            path.remove(path.size() - 1);
+            return false;
+        }
+
+        return true;
+    }
+    
+    public static TreeNode lowestCommonAncestorAppr1(TreeNode root, TreeNode p, TreeNode q) {
+        ArrayList<TreeNode> path1 = new ArrayList<>();
+        findPathToNode(root, path1, p.val);
+
+        ArrayList<TreeNode> path2 = new ArrayList<>();
+        findPathToNode(root, path2, q.val);
 
         TreeNode ans = null;
-        if(list1.size() < list2.size()){
-            for(int i=0; i<list1.size(); i++){
-                if (list1.get(i).val == list2.get(i).val)
-                    ans = list1.get(i);
+        if(path1.size() < path2.size()){
+            for(int i=0; i<path1.size(); i++){
+                if(path1.get(i).val == path2.get(i).val)
+                    ans = path1.get(i);
             }
         } else {
-            for(int i=0; i<list2.size(); i++){
-                if (list2.get(i).val == list1.get(i).val)
-                    ans = list2.get(i);
+            for (int i = 0; i < path2.size(); i++) {
+                if (path2.get(i).val == path1.get(i).val)
+                    ans = path2.get(i);
             }
         }
 
         return ans;
+    }
+
+    /**
+     * NOTE: Most optimized - O(n), O(1)
+     * Striver - https://www.youtube.com/watch?v=_-QHfMDde90&t=17s
+     * Approach - difficult to write here see the video.
+     */
+    public static TreeNode lowestCommonAncestorAppr(TreeNode root, TreeNode p, TreeNode q) {
+        if(root == null)
+            return null;
+
+        if (root == p || root == q)
+            return root;
+
+        TreeNode left = lowestCommonAncestorAppr(root.left, p,q);
+        TreeNode right = lowestCommonAncestorAppr(root.right, p,q);
+
+        if (left == null) {
+            return right;
+        } else if (right == null){
+            return left;
+        } else if (left == null && right == null) {
+            return null;
+        } else {
+            // NOTE: you have found your lca, as both left and right is not null
+            return root;
+        }
+
     }
 
 
