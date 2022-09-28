@@ -2,9 +2,11 @@ package basicsOnline;
 
 /**
  * Resources - https://medium.com/@alifabdullah/easiest-explanation-of-abstract-class-and-interface-280741bc2daf
+ * Example - https://stackoverflow.com/questions/10040069/abstract-class-vs-interface-in-java?answertab=scoredesc#tab-top
  * https://www.baeldung.com/java-interfaces
  * https://www.baeldung.com/java-abstract-class
  * https://www.baeldung.com/java-interface-vs-abstract-class
+ *
  */
 
 /**
