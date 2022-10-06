@@ -17,6 +17,7 @@ package basicsOnline;
  * Abstracts methods are methods will only signature.
  * 3. A class extending abstract class will have to implement all abstract members of the abstract class.
  * 4. Use extends here.
+ * 5. Using an abstract class avoids reimplmentations, while preserving the power of the interface.
  */
 
 /**
@@ -24,6 +25,7 @@ package basicsOnline;
  * 1. Just a interface not a class.
  * 2. Can only have method signatures and static variables.
  * 3. Interfaces are best for creating contracts, that will ensure that all subclasses implement the behaviour by abiding the code.
+ * 4. all the methods in interface are by default public and static.
  */
 
 interface Automobile {
