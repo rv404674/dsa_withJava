@@ -10,6 +10,7 @@ public class VerticalOrderTraversalBt {
     /**
      * Approach - Use BFS (level order traversal as it will automatically take care of nodes - requirement from left to right).
      * need to use hashmap as well, for storing nodes at various levels.
+     * top-bottom and left-right,
      *
      * Time - O(n) + k, space - 3*O(n)
      */
