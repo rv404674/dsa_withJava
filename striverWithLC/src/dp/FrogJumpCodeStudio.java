@@ -3,6 +3,7 @@ package dp;
 import java.util.Arrays;
 
 // SOLVED IN 15mins.
+// Frog jump - https://www.codingninjas.com/codestudio/problems/frog-jump_3621012?source=youtube&campaign=striver_dp_videos&utm_source=youtube&utm_medium=affiliate&utm_campaign=striver_dp_videos
 public class FrogJumpCodeStudio {
     public static int frogJump(int n, int heights[]) {
         int[] dp = new int[n+1];
