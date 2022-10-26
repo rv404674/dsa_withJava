@@ -25,4 +25,22 @@ public class validParentheses {
 
         return stack.empty();
     }
+
+    public boolean isValidOptimized(String s){
+        Stack<Character> stack = new Stack<>();
+        for(char x:s.toCharArray()){
+            if(x == '(' ||  x == '[' || x == '{')
+                stack.push(x);
+            else {
+                if(stack.isEmpty())
+                    return false;
+                char top = stack.pop();
+                if((top == '(' && x == ')') || (top == '{' && x== '}') || (top == '[' && x == ']')) continue;
+                else return false;
+            }
+        }
+
+        return stack.isEmpty();
+    }
+
 }
