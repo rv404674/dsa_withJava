@@ -18,6 +18,12 @@ public class HeapImplementation {
     // min/max in = O(1)
     // search = O(N)
 
+    // NOTE: If you want largest elements, use min heap
+    // as min heap gives you access to smallest elements that you can eject as you care about largest only.
+    // check kth largest video.
+    // or kMaxSUmCombinatio Problem
+    // Video - https://www.youtube.com/watch?v=hGK_5n81drs&t=634s
+
     public static void main(String[] args) {
         // impelment min heap
         // use PQ

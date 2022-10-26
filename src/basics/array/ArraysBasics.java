@@ -35,6 +35,7 @@ public class ArraysBasics {
         for(int i=0; i<intArray.length; i++) {
             System.out.println(Arrays.toString(intArray[i]));
         }
+
     }
 
     public void string2DArray(){
