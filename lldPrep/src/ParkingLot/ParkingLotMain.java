@@ -20,6 +20,13 @@ public class ParkingLotMain {
         // use for easy access during unpark
         HashMap<String, Vehicle> ticketHashMap = new HashMap<>();
 
+        /**
+         * FIXME: IMPROVEMENTS
+         * 1. Singleton design pattern for parking lot
+         * 2. Threading - how to make write thread safe.
+         * 3. For ordering which DS to use so that the ordering is maintained.
+         */
+
         while(scanner.hasNext()){
             String input = scanner.next();
             // TODO:
