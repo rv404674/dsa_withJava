@@ -1,6 +1,5 @@
 package ParkingLot;
 
-import ParkingLot.Vehicles.ParkingLot;
 import ParkingLot.Vehicles.Vehicle;
 
 import java.util.Arrays;
@@ -40,7 +39,7 @@ public class ParkingLotMain {
 
                 int floor = Integer.parseInt(tokens[2]);
                 int slots = Integer.parseInt(tokens[3]);
-                parkingLot = new ParkingLot(tokens[1], floor, slots);
+                parkingLot = ParkingLot.getInstance(tokens[1], floor, slots);
 
                 for( int i=1; i<=floor; i++){
                     ParkingFloor parkingFloor = new ParkingFloor(i, slots);

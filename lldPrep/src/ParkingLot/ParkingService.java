@@ -1,6 +1,5 @@
 package ParkingLot;
 
-import ParkingLot.Vehicles.ParkingLot;
 import ParkingLot.Vehicles.Vehicle;
 import ParkingLot.Vehicles.VehicleType;
 
@@ -8,7 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class ParkingService {
-    public Ticket parkVehicle(
+    public synchronized Ticket  parkVehicle(
              ParkingLot parkingLot,
             HashMap<Integer, ParkingFloor> floorList, String vehicleType, String registrationNumer, String color) {
 
@@ -50,7 +49,7 @@ public class ParkingService {
     }
 
 
-    public void unparkVehicle(
+    public synchronized void unparkVehicle(
             HashMap<Integer, ParkingFloor> floorHashMap,
             HashMap<String, Vehicle> ticketHashMap,
             String ticketId
