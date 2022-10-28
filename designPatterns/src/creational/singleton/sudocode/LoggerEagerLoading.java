@@ -6,6 +6,9 @@ package creational.singleton.sudocode;
 public class LoggerEagerLoading {
     private static LoggerEagerLoading instance = new LoggerEagerLoading();
 
+    // NOTE:
+    // if you dont make the constructogr private, you can create new objects using new.
+    // which is violation of singleton as once instance should be created and used across all.
     private LoggerEagerLoading(){
     }
 
