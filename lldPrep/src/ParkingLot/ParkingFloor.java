@@ -2,25 +2,23 @@ package ParkingLot;
 
 import ParkingLot.Vehicles.Vehicle;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class ParkingFloor {
     private int floorNo;
     private int totalSlots;
-    private List<Integer> truckSlots;
-    private List<Integer> bikeSlots;
-    private List<Integer> carSlots;
+    private TreeSet<Integer> truckSlots;
+    private TreeSet<Integer> bikeSlots;
+    private TreeSet<Integer> carSlots;
     // TODO: check later if you want to add VehicleList here itself.
 
 
     public ParkingFloor(int floorNo, int totalSlots) {
         this.floorNo = floorNo;
         this.totalSlots = totalSlots;
-        this.truckSlots = new ArrayList<>();
-        this.bikeSlots = new ArrayList<>();
-        this.carSlots = new ArrayList<>();
+        this.truckSlots = new TreeSet<>();
+        this.bikeSlots = new TreeSet<>();
+        this.carSlots = new TreeSet<>();
         computeSlotLists();
     }
 
@@ -28,6 +26,10 @@ public class ParkingFloor {
         // NOTE: assuming no edge cases
         // min 4slots will be there atleast
         // 1 for truck, 2 for bike and rest for car
+        // NOTE: We are using TreeSet because we want the lowest on the first index always.
+        // park car - remove 3
+        // unpark
+        // add - 3 now (3 should be picked)
         for (int i=1; i<=totalSlots; i++){
             if(i<=1){
                 truckSlots.add(i);
@@ -47,11 +49,11 @@ public class ParkingFloor {
         return totalSlots;
     }
 
-    public List<Integer> getTruckSlots() {
+    public TreeSet<Integer> getTruckSlots() {
         return truckSlots;
     }
 
-    public List<Integer> getBikeSlots() {
+    public TreeSet<Integer> getBikeSlots() {
         return bikeSlots;
     }
 
@@ -63,19 +65,19 @@ public class ParkingFloor {
         this.totalSlots = totalSlots;
     }
 
-    public void setTruckSlots(List<Integer> truckSlots) {
+    public void setTruckSlots(TreeSet<Integer> truckSlots) {
         this.truckSlots = truckSlots;
     }
 
-    public void setBikeSlots(List<Integer> bikeSlots) {
+    public void setBikeSlots(TreeSet<Integer> bikeSlots) {
         this.bikeSlots = bikeSlots;
     }
 
-    public void setCarSlots(List<Integer> carSlots) {
+    public void setCarSlots(TreeSet<Integer> carSlots) {
         this.carSlots = carSlots;
     }
 
-    public List<Integer> getCarSlots() {
+    public TreeSet<Integer> getCarSlots() {
         return carSlots;
     }
 }

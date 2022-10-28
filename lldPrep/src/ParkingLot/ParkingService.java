@@ -4,7 +4,9 @@ import ParkingLot.Vehicles.Vehicle;
 import ParkingLot.Vehicles.VehicleType;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.TreeSet;
 
 public class ParkingService {
     public synchronized Ticket  parkVehicle(
@@ -25,10 +27,11 @@ public class ParkingService {
                 if (parkingFloor.getCarSlots().isEmpty()) continue;
                 else {
                     // got the floor
-                    List<Integer> temp = parkingFloor.getCarSlots();
-                    slot = temp.get(0);
+                    TreeSet<Integer> temp = parkingFloor.getCarSlots();
+                    Iterator<Integer> iterator = temp.iterator();
+                    slot = iterator.next();
                     floor = i;
-                    temp.remove(0);
+                    temp.remove(slot);
 
                     // NOTE: reduce the parking slots available on that floor
                     parkingFloor.setCarSlots(temp);
@@ -68,7 +71,7 @@ public class ParkingService {
         ParkingFloor parkingFloor = floorHashMap.get(floor);
         if(vehicle.getVehicleType() == VehicleType.CAR){
             // add it in cars list
-            List<Integer> carSlots = parkingFloor.getCarSlots();
+            TreeSet<Integer> carSlots = parkingFloor.getCarSlots();
             // FIXME: later, we want to show lowest slot first
             // not the first slots.
             carSlots.add(slot);
