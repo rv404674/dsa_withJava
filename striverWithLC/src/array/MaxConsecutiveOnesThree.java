@@ -5,28 +5,37 @@ public class MaxConsecutiveOnesThree {
     // Two Pointer approach
     // TC - 2*O(N), SC - O(1)
     // ACCEPTED
-    public int longestOnes(int[] nums, int k) {
-        if(nums.length == 0)
-            return 0;
+    // SOlution - https://www.youtube.com/watch?v=Gl-8HLvV8bc
+    // easy to understand
+    public static int longestOnes(int[] nums, int k) {
+        int left = 0, right = 0;
+        int ans = Integer.MIN_VALUE;
+        int zeroCount = 0;
 
-        int ans = -1;
-        int i=0, j=0;
-
-        // i will move fast then j
-        while(i<nums.length)
-        {
-            if(nums[i] == 0)
-                k--;
-            while(k<0){
-                if(nums[j]==0)
-                    k+=1;
-                j+=1;
+        while (right < nums.length) {
+            // if encounter 1, do nothign just increment right
+            if (nums[right] == 0) {
+                // encounter 0 -> increment
+                zeroCount += 1;
+                while (zeroCount > k) {
+                    if (nums[left] == 0)
+                        zeroCount -= 1;
+                    left += 1;
+                }
             }
 
-            i+=1;
-            ans = Math.max(ans, i-j);
+            // length of a window will be right-left +1
+            ans = Math.max(ans, right - left + 1);
+            // right will always increase
+            right += 1;
         }
 
         return ans;
+    }
+
+    public static void main(String[] args) {
+        int[] a = {1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0};
+        int k = 2;
+        System.out.println(longestOnes(a, k));
     }
 }
