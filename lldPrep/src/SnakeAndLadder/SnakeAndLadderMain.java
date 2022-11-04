@@ -5,6 +5,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 
+
+// Problem Statement - https://workat.tech/machine-coding/practice/snake-and-ladder-problem-zgtac9lxwntg
+// Apprach for improvement - https://www.youtube.com/watch?v=88bcV-XV0wo&list=PL6W8uoQQ2c61X_9e6Net0WdYZidm7zooW&index=14
+
 public class SnakeAndLadderMain {
     public static void main(String[] args) {
         // Use a hasmap to give snakes position for an index
@@ -59,11 +63,8 @@ public class SnakeAndLadderMain {
             player.savePlayers(playerList);
         }
 
-        GameBoard gameBoard = GameBoard.getInstance(snakes, ladders, players);
-        GameBoardService.startGamePlay(
-                snakeHashMap,
-                ladderHashMap, playerList, gameBoard
-        );
+        GameBoardService gameBoardService = new GameBoardService(1, snakes, ladders, playerList, ladderHashMap, snakeHashMap);
+        gameBoardService.startGamePlay();
 
     }
 
