@@ -46,5 +46,23 @@ public class HashMapBasics {
                 System.out.println(k + " " + v)
         );
 
+        // NOTE: Hashmap in hashmap.
+        HashMap<String, HashMap<String , Integer>> hashMap2 = new HashMap<>();
+        hashMap2.put("Rahul", new HashMap<>(){{
+            put("continetal",100);
+        }});
+
+        hashMap2.forEach((k,v) -> {
+            System.out.println(k + "" + v);
+        });
+
+        HashMap<String, Integer> tmp = hashMap2.get("Rahul");
+        tmp.put("gixer", 200);
+
+        // NOTE: Original hashmap will change.
+        hashMap2.forEach((k,v) -> {
+            System.out.println(k + "" + v);
+        });
+
     }
 }
