@@ -9,4 +9,8 @@ public class PercentageSplit extends Split{
         super(user);
         this.percent = percent;
     }
+
+    public int getPercent() {
+        return percent;
+    }
 }

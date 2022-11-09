@@ -7,4 +7,6 @@ public class ExactSplit extends Split{
         super(user);
         this.amount = amount;
     }
+
+
 }
