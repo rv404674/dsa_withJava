@@ -7,6 +7,22 @@ public class UrlBuilder {
     // same fields as URL
     // inner class Builder should also have constructoe for all field
     // with only exception that it will return Builder type
+
+    // NOTE: sudocode way is correct, PP had also used this somewhere.
+    public final String protocol;
+    public final String hostName;
+    public final String port;
+    public final String pathName;
+    public final String queryParam;
+
+    private UrlBuilder(Builder builder){
+        this.protocol = builder.protocol;
+        this.hostName = builder.hostName;
+        this.port = builder.port;
+        this.pathName = builder.pathName;
+        this.queryParam = builder.queryParam;
+    }
+
     public static class Builder{
 
         private String protocol;
@@ -43,19 +59,5 @@ public class UrlBuilder {
         public UrlBuilder build() {
             return new UrlBuilder(this);
         }
-    }
-
-    public final String protocol;
-    public final String hostName;
-    public final String port;
-    public final String pathName;
-    public final String queryParam;
-
-    private UrlBuilder(Builder builder){
-        this.protocol = builder.protocol;
-        this.hostName = builder.hostName;
-        this.port = builder.port;
-        this.pathName = builder.pathName;
-        this.queryParam = builder.queryParam;
     }
 }
