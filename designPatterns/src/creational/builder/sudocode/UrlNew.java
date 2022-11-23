@@ -1,8 +1,9 @@
 package creational.builder.sudocode;
 
-public class UrlBuilder {
+public class UrlNew {
 
     // NOTE: To use builder pattern
+    // TODO: implement this later - https://www.baeldung.com/creational-design-patterns
     // have an inner nested static class
     // same fields as URL
     // inner class Builder should also have constructoe for all field
@@ -15,7 +16,7 @@ public class UrlBuilder {
     public final String pathName;
     public final String queryParam;
 
-    private UrlBuilder(Builder builder){
+    private UrlNew(Builder builder){
         this.protocol = builder.protocol;
         this.hostName = builder.hostName;
         this.port = builder.port;
@@ -56,8 +57,8 @@ public class UrlBuilder {
             return this;
         }
 
-        public UrlBuilder build() {
-            return new UrlBuilder(this);
+        public UrlNew build() {
+            return new UrlNew(this);
         }
     }
 }

@@ -11,20 +11,20 @@ public class Demo {
         System.out.println(url.getPathName());
 
         // Example 1 - Using Builder Pattern
-        UrlBuilder.Builder builder = new UrlBuilder.Builder();
+        UrlNew.Builder builder = new UrlNew.Builder();
         // NOTE: this is chaining is possible because we are returing builder itself.
         builder.protocol("http://").hostName("newswebsite:").port("443");
-        UrlBuilder urlBuilder = builder.build();
+        UrlNew urlNew = builder.build();
 
-        System.out.print(urlBuilder.protocol);
-        System.out.print(urlBuilder.hostName);
-        System.out.print(urlBuilder.port);
+        System.out.print(urlNew.protocol);
+        System.out.print(urlNew.hostName);
+        System.out.print(urlNew.port);
         System.out.println("/n");
 
         // Example 2
-        UrlBuilder.Builder builderTwo = new UrlBuilder.Builder();
+        UrlNew.Builder builderTwo = new UrlNew.Builder();
         builderTwo.protocol("http://").hostName("newswebsite2").pathName("/abc");
-        UrlBuilder urlBuilderTwo = builderTwo.build();
+        UrlNew urlBuilderTwo = builderTwo.build();
 
         System.out.print(urlBuilderTwo.protocol);
         System.out.print(urlBuilderTwo.hostName);
