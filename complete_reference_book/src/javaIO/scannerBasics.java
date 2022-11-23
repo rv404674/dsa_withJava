@@ -27,7 +27,7 @@ public class scannerBasics {
         }
         sc2.close();
 
-        // you can also read string
+        // you can also read int
         int marks = sc2.nextInt();
 
     }
