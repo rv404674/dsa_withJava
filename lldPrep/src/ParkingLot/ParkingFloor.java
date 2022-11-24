@@ -4,6 +4,8 @@ import ParkingLot.Vehicles.Vehicle;
 
 import java.util.*;
 
+// FIXME: Violation of O
+// what if a vehicle bigger than truck comes?
 public class ParkingFloor {
     private int floorNo;
     private int totalSlots;
