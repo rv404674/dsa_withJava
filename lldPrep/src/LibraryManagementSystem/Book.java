@@ -7,12 +7,15 @@ public class Book {
     private String title;
     private List<String> authors;
     private List<String> publishers;
+    private String issuedDate;
+    private User issuedUser;
 
     public Book(String bookdId, String title, List<String> authors, List<String> publishers) {
         this.bookdId = bookdId;
         this.title = title;
         this.authors = authors;
         this.publishers = publishers;
+        this.issuedUser = null;
     }
 
     public String getBookdId() {
@@ -45,5 +48,21 @@ public class Book {
 
     public void setPublishers(List<String> publishers) {
         this.publishers = publishers;
+    }
+
+    public String getIssuedDate() {
+        return issuedDate;
+    }
+
+    public void setIssuedDate(String issuedDate) {
+        this.issuedDate = issuedDate;
+    }
+
+    public User getIssuedUser() {
+        return issuedUser;
+    }
+
+    public void setIssuedUser(User issuedUser) {
+        this.issuedUser = issuedUser;
     }
 }

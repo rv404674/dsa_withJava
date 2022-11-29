@@ -4,31 +4,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Rack {
-    private Book[] rackStorage;
-    private int freeSpace;
+    private int rackId;
+    private Book book;
 
-    public Rack(int rackSize) {
-        this.rackStorage = new Book[rackSize];
-        this.freeSpace = rackSize;
+    public Rack(int rackId) {
+        this.rackId = rackId;
+        this.book = null;
     }
 
-    public List<Integer> addBooks(List<Book> books){
-        List<Integer> slotsLeft = new ArrayList<>();
-        int cnt = 0;
-
-        for(int i=0; i< rackStorage.length; i++){
-            if(rackStorage[i] == null && cnt < books.size()){
-                slotsLeft.add(i);
-                rackStorage[i] = books.get(cnt++);
-            }
-        }
-
-        freeSpace -= books.size();
-
-        return slotsLeft;
+    public Book getBook() {
+        return book;
     }
 
-    public int getFreeSpace() {
-        return freeSpace;
+    public void setBook(Book book) {
+        this.book = book;
+    }
+
+    public int getRackId() {
+        return rackId;
     }
 }
