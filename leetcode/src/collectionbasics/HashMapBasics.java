@@ -46,23 +46,41 @@ public class HashMapBasics {
                 System.out.println(k + " " + v)
         );
 
-        // NOTE: Hashmap in hashmap.
-        HashMap<String, HashMap<String , Integer>> hashMap2 = new HashMap<>();
-        hashMap2.put("Rahul", new HashMap<>(){{
-            put("continetal",100);
-        }});
+        // NOTE: Important
+        // Context - https://stackoverflow.com/questions/934775/changing-value-after-its-placed-in-hashmap-changes-whats-inside-hashmap
+        // NOTE: java uses pass by ref for non primitive types.
+        // when you add a user/list to the hm, you dont store the actual user, you store the pointer to the user
+        // so when you follow that pointer and make changes using it, it will reflect in the hm as well.
+        HashMap<Integer, User> userHashMap = new HashMap<>();
+        userHashMap.put(12, new User("Rahul", 25));
 
-        hashMap2.forEach((k,v) -> {
-            System.out.println(k + "" + v);
-        });
 
-        HashMap<String, Integer> tmp = hashMap2.get("Rahul");
-        tmp.put("gixer", 200);
+        User user = userHashMap.get(12);
+        user.setRollNo(30);
+        // will reflect in original HM.
 
         // NOTE: Original hashmap will change.
-        hashMap2.forEach((k,v) -> {
-            System.out.println(k + "" + v);
+        userHashMap.forEach((k,v) -> {
+            System.out.println(k + "" + v.name + " " + v.rollNo);
         });
 
+    }
+}
+
+class User {
+    String name;
+    int rollNo;
+
+    public User(String name, int rollNo) {
+        this.name = name;
+        this.rollNo = rollNo;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setRollNo(int rollNo) {
+        this.rollNo = rollNo;
     }
 }
