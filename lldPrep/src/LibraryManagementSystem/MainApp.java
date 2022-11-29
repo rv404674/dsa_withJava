@@ -37,6 +37,21 @@ public class MainApp {
             }
         }
 
+        // FIXME: for later
+        // 1. Can have a bookStatus ENum - Reserved, Issued
+        // 2. For searc, a Search Service
+        // getBooksByTitle(String title)
+        // getBooksByAuthro(String author)
+
+        // class Author {
+        // list<Book> publishedBooks}
+
+        // FIXME: add TestCases as well.
+        // FIXME: think about the usecase
+        // if a book has been issued, can it be issued to another user.
+        // if a book is removed, it shouldnt be in users issue book.
+        // check for vlaid book.
+
     }
 
     public static List<Book> parseAddBookTags(String[] tags){
