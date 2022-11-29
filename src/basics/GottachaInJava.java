@@ -13,5 +13,9 @@ public class GottachaInJava {
 
         // USE equals to
         System.out.println(s1.equals(s2));
+
+        // NOTE: when you want to add to a string and send it to downstream stack
+        // Use String instead of StringBuilder.
+        // as stringbuilder will keep on adding.
     }
 }
