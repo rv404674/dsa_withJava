@@ -1,23 +1,23 @@
 package CabBooking.services;
 
-import CabBooking.Availaibility;
-import CabBooking.Cab;
-import CabBooking.Driver;
-import CabBooking.Location;
+import CabBooking.*;
 
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
 
-public class LocationService {
+public class LocationService implements ISearchPolicy{
     HashMap<Integer, Driver> driverHashMap;
 
     public LocationService(HashMap<Integer, Driver> driverHashMap) {
         this.driverHashMap = driverHashMap;
     }
 
-    public Cab nearestAvailableCab(Location riderLocation){
+    // searchbasedonAvailaibiluty
+    // FIXME: what if I want to book a PremiumCab
+    public Cab getCab(Rider rider){
+        Location riderlocation = rider.getLocation();
         Cab nearestCab = null;
         int distance = Integer.MAX_VALUE;
 
@@ -28,7 +28,7 @@ public class LocationService {
 
             // check availability
             if(driver.getAvailaibility() == Availaibility.AVAILAIBLE){
-                int curDistance = getDistance(driver.getCab().getLocation(), riderLocation);
+                int curDistance = getDistance(driver.getCab().getLocation(), riderlocation);
                 if(curDistance < distance) {
                     nearestCab = driver.getCab();
                     distance = curDistance;

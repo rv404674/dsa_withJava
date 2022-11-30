@@ -7,14 +7,18 @@ import java.util.HashMap;
 public class BookingService {
     HashMap<Integer, Ride> rideStorage;
     LocationService locationService;
+    PremiumService premiumService;
 
     public BookingService(HashMap<Integer, Ride> rideStorage, LocationService locationService) {
         this.rideStorage = rideStorage;
         this.locationService = locationService;
     }
 
-    public void bookCab(Rider rider, Location destinationLocation){
-        Cab nearestCab = locationService.nearestAvailableCab(rider.getLocation());
+
+    // NOTE: get cab based on location, or any other service
+    public void bookCab(Rider rider, Location destinationLocation, ISearchPolicy searchPolicy){
+//        Cab cab2 = premiumService.getCab(rider);
+        Cab nearestCab = searchPolicy.getCab(rider);
         int distance = locationService.getDistance(rider.getLocation(), destinationLocation);
 
         // ride Booked
