@@ -63,10 +63,14 @@ public class StoppableThread {
 //        System.out.println("Requesting stop");
 //        stoppableRunnable.requestStop();
 
-        // NOTE: even if the main thread dies, the program will keep on running, if there is a thread
-        // that is running
+        // NOTE: JVM will stay alive, as long as there are any threads running.
+        //  so basically, even if main thread dies and there is a thread running, JVM will still run.
         InfiniteThread infiniteThread = new InfiniteThread();
         Thread thread = new Thread(infiniteThread);
+
+        // if you dont want a thread to keep JVM alive, then mark it daemon.
+        // NOTE: daemon threads are stopped in an undefined state, so make sure that you dont put any imp code in it.
+        // thread.setDaemon(true);
         thread.start();
 
         Thread.sleep(2000);

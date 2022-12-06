@@ -9,6 +9,10 @@ public class SleepingAndGettingReference {
         Thread thread1 = new Thread(runnable1, "Thread 1");
         thread1.start();
 
+        // NOTE: main thread will be blocked until thread1 finished its execution
+        // join will make sure, thread1 runs before thread2
+        // thread1.join();
+
         Thread thread2 = new Thread(runnable1, "Thread 2");
         thread2.start();
     }
