@@ -5,6 +5,7 @@ package HashMap;
 
 import java.util.HashMap;
 // BRute - sort - O(nlogn)
+// NOTE: this will work for +ve integers.
 public class LongestConsecutiveSubsequence {
     public static int longestConsecutive(int[] nums) {
         if(nums.length <= 1)
