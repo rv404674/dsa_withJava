@@ -15,6 +15,7 @@ public class HeapImplementation {
 
     // NOTE: UseCase
     // insert/delete = O(logn)
+    // deleting an object -  to search it O(N) + O(logN)
     // min/max in = O(1)
     // search = O(N)
 
