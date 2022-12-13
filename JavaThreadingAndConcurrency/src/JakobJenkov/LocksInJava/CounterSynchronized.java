@@ -1,4 +1,4 @@
-package tuts.LocksInJava;
+package JakobJenkov.LocksInJava;
 
 public class CounterSynchronized {
     private int count = 0;

@@ -1,4 +1,4 @@
-package tuts.LocksInJava;
+package JakobJenkov.LocksInJava;
 
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
