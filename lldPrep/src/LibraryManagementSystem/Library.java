@@ -10,6 +10,7 @@ public class Library {
     private int racksLeft;
     HashMap<String, User> userHashMap;
 
+
     public Library(int totalRacks, HashMap<String, User> userHashMap) {
         this.totalRacks = totalRacks;
         this.userHashMap = userHashMap;

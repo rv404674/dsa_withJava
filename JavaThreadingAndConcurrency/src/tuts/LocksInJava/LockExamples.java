@@ -17,6 +17,29 @@ public class LockExamples {
         t3.start();
         t4.start();
     }
+
+    public static void extraMethod() {
+        ReentrantLock lock = new ReentrantLock();
+        int holdCount = lock.getHoldCount();
+        int queueLenght = lock.getQueueLength();
+        boolean hasQueueThisThread = lock.hasQueuedThread(Thread.currentThread());
+        boolean hasQueuedThreads = lock.hasQueuedThreads();
+        boolean isFair = lock.isFair();
+        boolean isLocked = lock.isLocked();
+        boolean isHeldByCurrentThread = lock.isHeldByCurrentThread();
+    }
+
+    public static void tryLock(){
+        Lock lock = new ReentrantLock();
+        try {
+            // NOTE: will try to lock the lock and if successfull, will give true as the boolean.
+            boolean lockSuccessfull = lock.tryLock();
+            System.out.println("Lock successfull: " + lockSuccessfull);
+        } finally {
+            lock.unlock();
+        }
+    }
+
 }
 
 class ThreadImplementation implements Runnable {

@@ -2,11 +2,11 @@ package basics.tree;
 
 import java.util.*;
 
-class Element {
+class Element2 {
     TreeNode treeNode;
     int level;
 
-    public Element(TreeNode treeNode, int level) {
+    public Element2(TreeNode treeNode, int level) {
         this.treeNode = treeNode;
         this.level = level;
     }
@@ -24,25 +24,25 @@ public class BinaryTreeVerticalOrderTraversal {
         if(root == null)
             return ans;
 
-        Queue<Element> queue = new LinkedList<>();
-        queue.add(new Element(root, 0));
+        Queue<Element2> queue = new LinkedList<>();
+        queue.add(new Element2(root, 0));
         int mn = Integer.MAX_VALUE, mx = Integer.MIN_VALUE;
 
         while(!queue.isEmpty()){
-            Element element = queue.poll();
-            if(!hashMap.containsKey(element.level))
-                hashMap.put(element.level, new ArrayList<>());
+            Element2 Element2 = queue.poll();
+            if(!hashMap.containsKey(Element2.level))
+                hashMap.put(Element2.level, new ArrayList<>());
 
-            hashMap.get(element.level).add(element.treeNode.val);
-            mn = Math.min(mn, element.level);
-            mx = Math.max(mx, element.level);
+            hashMap.get(Element2.level).add(Element2.treeNode.val);
+            mn = Math.min(mn, Element2.level);
+            mx = Math.max(mx, Element2.level);
 
-            if(element.treeNode.left != null){
-                queue.add(new Element(element.treeNode.left, element.level-1));
+            if(Element2.treeNode.left != null){
+                queue.add(new Element2(Element2.treeNode.left, Element2.level-1));
             }
 
-            if(element.treeNode.right != null){
-                queue.add(new Element(element.treeNode.right, element.level+1));
+            if(Element2.treeNode.right != null){
+                queue.add(new Element2(Element2.treeNode.right, Element2.level+1));
             }
         }
 
