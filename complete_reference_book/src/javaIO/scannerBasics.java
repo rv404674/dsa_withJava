@@ -8,27 +8,27 @@ public class scannerBasics {
      * Input Stream (stdio), a file or a string source as well
      *
      * Imp methods: next(), hasnext(), close(), useDelimiter(), defualt delimi is white space.
+     * Typically, Scanner breaks the input into tokens using a delimiter pattern, which is, by default, any whitespace.
      */
 
     public static void main(String[] args) {
-//        Scanner sc = new Scanner(System.in);
-//        System.out.println("Pls Enter your name");
-//        // FIXME: issue with this from "Rahul Verma" it will only take Rahul as name because Verma is the by defual delimi
-//        String name = sc.next();
-//        System.out.println("Hello" + name);
-//        sc.close();
+        // next - will just read a word until the next delimiter i.e space.
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Pls Enter your name");
+        // FIXME: issue with this from "Rahul Verma" it will only take Rahul as name because space is the by defual delimiter.
+        String name = sc.next();
+        System.out.println(name);
 
-        // NOTE: use this for interviews as well.
+        // use nextLine to read the whole line
+        // NOTE: always use this in the interviews.
         Scanner sc2 = new Scanner(System.in);
-        sc2.useDelimiter(System.getProperty("line.separator"));
-        while (sc2.hasNext()) {
-            String name2 = sc2.next();
-            System.out.println("Hello" + name2);
-        }
-        sc2.close();
+        System.out.println("Pls Enter your name");
+        name = sc2.nextLine();
+        System.out.println(name);
+
 
         // you can also read int
-        int marks = sc2.nextInt();
+//        int marks = sc2.nextInt();
 
     }
 }

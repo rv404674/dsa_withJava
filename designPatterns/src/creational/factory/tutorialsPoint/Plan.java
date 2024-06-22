@@ -8,5 +8,8 @@ public abstract class Plan {
     public void getBill(int units){
         System.out.println(units*rate);
     }
-
 }
+
+// NOTE:
+// abstract class vs interface.
+// in an inteface, you cant have a common functionality like getBill method.

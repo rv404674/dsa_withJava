@@ -7,7 +7,7 @@ public class BestTimeToSellStock {
     // this is the two pointer approach
     // O(2N)
     // AC
-    public int maxProfitTwoPointer(int[] prices) {
+    public static int maxProfitTwoPointer(int[] prices) {
         //  {12,10,3,7,39,10,22,10,5,40}
         // (3,39) (10,22) (5,40)
         if(prices.length == 1)
@@ -79,5 +79,10 @@ public class BestTimeToSellStock {
 
         dp[index][buy] = profit;
         return profit;
+    }
+
+    public static void main(String[] args) {
+        int[] ut1 = {7,1,5,3,6,4};
+        System.out.println(maxProfitTwoPointer(ut1));
     }
 }

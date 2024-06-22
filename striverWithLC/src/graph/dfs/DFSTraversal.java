@@ -1,46 +1,52 @@
 package graph.dfs;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
+/**
+ * Question Link - https://www.codingninjas.com/studio/problems/dfs-traversal_630462?utm_source=striver&utm_medium=website&utm_campaign=a_zcoursetuf
+ * NOTE: There might be disconnected components in the graph.
+ */
 public class DFSTraversal {
     public static ArrayList<ArrayList<Integer>> depthFirstSearch(int v, int e, ArrayList<ArrayList<Integer>> edges) {
-        ArrayList< ArrayList<Integer> > ans = new ArrayList<>();
+        ArrayList<ArrayList<Integer>> ans = new ArrayList<>();
         HashMap<Integer, List<Integer>> graph = new HashMap<>();
+        boolean[] visited = new boolean[v];
 
-        for(ArrayList<Integer> edge: edges) {
-            List<Integer> temp = graph.getOrDefault(edge.get(0), new ArrayList<>());
-            temp.add(edge.get(1));
-            graph.put(edge.get(0), temp);
-
-            List<Integer> temp2 = graph.getOrDefault(edge.get(1), new ArrayList<>());
-            temp2.add(edge.get(0));
-            graph.put(edge.get(1), temp2);
+        for (List<Integer> edge : edges){
+            // NOTE: In Java objects are always passed by reference.
+            // so here even though you are doing a get, it will be reflected in the original graph.
+            graph.getOrDefault(edge.get(0), new ArrayList<>()).add(edge.get(1));
+            graph.getOrDefault(edge.get(1), new ArrayList<>()).add(edge.get(0));
         }
 
-        boolean[] visited = new boolean[v];
-        for(int i=0; i<v; i++) {
-            // if there is not edge for this node
-            if(!graph.containsKey(i))
+        for (int i=0; i<v; i++){
+            // NOTE: There might be some nodes that disconnected and dont have any any edge to them.
+            if(!graph.containsKey(i)){
                 graph.put(i, new ArrayList<>());
+            }
 
-            if (!visited[i]) {
+            if(!visited[i]){
+                // start dfs
                 ArrayList<Integer> path = new ArrayList<>();
-                dfsUtil(i, graph, visited, path);
-                Collections.sort(path);
+                dFSUtil(i, visited, path, graph);
                 ans.add(path);
             }
+
         }
 
         return ans;
     }
 
-    public static void dfsUtil(int node, HashMap<Integer, List<Integer>> graph, boolean[] visited, ArrayList<Integer> path){
-        path.add(node);
+    public static void dFSUtil(int node, boolean[] visited, ArrayList<Integer> path, HashMap<Integer, List<Integer>> graph) {
         visited[node] = true;
+        path.add(node);
 
-        for(int neighbour: graph.get(node)){
-            if(!visited[neighbour])
-                dfsUtil(neighbour, graph, visited, path);
+        for(int neighbour:graph.get(node)){
+            if (!visited[neighbour])
+                dFSUtil(neighbour, visited, path, graph);
         }
     }
+
 }

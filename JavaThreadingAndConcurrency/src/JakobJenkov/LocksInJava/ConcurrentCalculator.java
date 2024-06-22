@@ -43,24 +43,24 @@ public class ConcurrentCalculator {
         }
     }
 
-    public void calculate(Calculation ... calculations){
-        try {
-            lock.lock();
-            for(Calculation calculation: calculations){
-                switch (calculation.type){
-                    case Calculation.ADDITION -> {
-                        add(calculation.value);
-                        break;
-                    }
-                    default -> {
-                        subtract(calculation.value);
-                        break;
-                    }
-                }
-            }
-        } finally {
-            lock.unlock();
-        }
-    }
+//    public void calculate(Calculation ... calculations){
+//        try {
+//            lock.lock();
+//            for(Calculation calculation: calculations){
+//                switch (calculation.type){
+//                    case Calculation.ADDITION -> {
+//                        add(calculation.value);
+//                        break;
+//                    }
+//                    default -> {
+//                        subtract(calculation.value);
+//                        break;
+//                    }
+//                }
+//            }
+//        } finally {
+//            lock.unlock();
+//        }
+//    }
 
 }

@@ -18,6 +18,8 @@ package basicsOnline;
  * 3. A class extending abstract class will have to implement all abstract members of the abstract class.
  * 4. Use extends here.
  * 5. Using an abstract class avoids reimplmentations, while preserving the power of the interface.
+ * NOTE: people dont use use abstract class in prod.
+ * and extends is used for class inheritance.
  */
 
 /**

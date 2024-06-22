@@ -39,18 +39,18 @@ class Graph {
         System.out.println(node);
         visited[node] = true;
 
-        Iterator<Integer> neighbours = adjacenyList[node].iterator();
-        while(neighbours.hasNext()){
-            int neighbour = neighbours.next();
-            if(!visited[neighbour]) {
-                dfsUtil(neighbour, visited);
-            }
-        }
-//        for(int neighbour : adjacenyList[node]){
-//            if(!visited[neighbour]){
-//                dfsUtil(node, visited);
+//        Iterator<Integer> neighbours = adjacenyList[node].iterator();
+//        while(neighbours.hasNext()){
+//            int neighbour = neighbours.next();
+//            if(!visited[neighbour]) {
+//                dfsUtil(neighbour, visited);
 //            }
 //        }
+        for(int neighbour : adjacenyList[node]){
+            if(!visited[neighbour]){
+                dfsUtil(node, visited);
+            }
+        }
     }
 }
 
