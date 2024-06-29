@@ -3,6 +3,10 @@ package basics.comparator;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.PriorityQueue;
 
 class Student {
     int rollNo;
@@ -21,13 +25,7 @@ class RollComparator implements Comparator<Student> {
         // -1 if o1 is less than o2.
         // 1 if o1 is > o2. WIll swap in this case
         // else 0
-        if(o1.rollNo < o2.rollNo){
-            return -1;
-        } else if(o1.rollNo > o2.rollNo){
-            // swap o1 and o2
-            return 1;
-        }
-        return 0;
+        return Integer.compareTo(o1.rollNo, o2.rollNo);
     }
 }
 
@@ -56,4 +54,48 @@ public class ComparatorBasics {
 
     }
 
+}
+
+
+class Element implements Comparable<Element> {
+    int frequency;
+    int elementValue;
+
+    Element(int count, int value) {
+        this.frequency = count;
+        this.elementValue = value;
+    }
+
+
+    @Override
+    public int compareTo(Element o) {
+        return Integer.compare(this.frequency, o.frequency);
+    }
+}
+
+ class TopKFrequentElements {
+    // NOTE: Intention is to get AC in first go itself.
+    public static int[] topKFrequent(int[] nums, int k) {
+        PriorityQueue<Element> minHeap = new PriorityQueue<>();
+        List<Integer> topElements = new ArrayList<>();
+        HashMap<Integer, Integer> hashMap = new HashMap<>();
+
+        for (int i : nums) {
+            hashMap.put(i, hashMap.getOrDefault(i, 0) + 1);
+        }
+
+        // key is elementValue, and value is frequence
+        for (Map.Entry<Integer, Integer> entry : hashMap.entrySet()) {
+            minHeap.offer(new Element(entry.getValue(), entry.getKey()));
+            if (minHeap.size() > k) {
+                minHeap.poll();
+            }
+        }
+
+        while (!minHeap.isEmpty()) {
+            topElements.add(minHeap.poll().elementValue);
+        }
+
+        return topElements.stream().mapToInt(Integer::intValue).toArray();
+    }
 }
