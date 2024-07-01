@@ -33,7 +33,6 @@ public class BinarySemaphore {
 
 class ThreadImplementation implements Runnable {
     Semaphore binarySemaphore = new Semaphore(1);
-    Lock lock = new ReentrantLock(true);
     int count = 0;
 
     @Override

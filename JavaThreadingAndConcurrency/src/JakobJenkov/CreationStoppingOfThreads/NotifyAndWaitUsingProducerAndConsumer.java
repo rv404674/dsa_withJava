@@ -23,6 +23,16 @@ class Buffer {
         this.count = 0;
     }
 
+
+    /***
+     * cant be this
+     * if(count == size){
+     *     wait();
+     * }
+     *
+     * Spurious wakeups. Threads can wake up due to OS factors as well. In that case we would want to check (count==size) condition again,
+     * else it might lead to overflow.
+     */
     public synchronized void produce(int item) throws InterruptedException {
         while(count == size){
             // Buffer is full, wait for the consumer to consume
