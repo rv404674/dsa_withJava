@@ -8,7 +8,7 @@ public class GameBoard {
     private int ladders;
     private int players;
 
-    public GameBoard(int size, int winningPosition, int snakes, int ladders, int players) {
+    private GameBoard(int size, int winningPosition, int snakes, int ladders, int players) {
         this.size = size;
         this.winningPosition = winningPosition;
         this.snakes = snakes;
