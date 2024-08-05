@@ -25,7 +25,7 @@ class RollComparator implements Comparator<Student> {
         // -1 if o1 is less than o2.
         // 1 if o1 is > o2. WIll swap in this case
         // else 0
-        return Integer.compareTo(o1.rollNo, o2.rollNo);
+        return Integer.compare(o1.rollNo, o2.rollNo);
     }
 }
 
