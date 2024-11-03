@@ -11,6 +11,9 @@ package synchronizedBasics;
  * When T1 gets in methodX(), the whole object would be blocked from doing any further operation.
  */
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 /**
  * Now lets you have a payment service
  * PaymenService {
@@ -52,6 +55,7 @@ class A {
 public class SynchronizedBlocksBasics {
 
     public static void main(String[] args) {
+        // TODO: Approach 1.of running.
         A obj = new A();
 
         Runnable task1 = () -> {
@@ -67,6 +71,13 @@ public class SynchronizedBlocksBasics {
 
         thread1.start();
         thread2.start();
+
+
+        // TODO: Approach 2
+        ExecutorService executorService = Executors.newFixedThreadPool(2);
+        executorService.submit(task1);
+        executorService.submit(task2);
+
     }
 
 

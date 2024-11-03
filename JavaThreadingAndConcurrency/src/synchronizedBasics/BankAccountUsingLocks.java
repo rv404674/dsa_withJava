@@ -1,5 +1,7 @@
 package synchronizedBasics;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -7,6 +9,8 @@ import java.util.concurrent.locks.ReentrantLock;
  * FIXME: Read the SynchronizedBlockBasics file before.
  * Locks let you have fine grained blocking in comparison to synchronized keywords.
  * Concurrency would take a hit if you will use synchronized.
+ *
+ * Executors vs normal Thread.
  */
 class BankAccountService {
     private double balance;
@@ -60,8 +64,22 @@ public class BankAccountUsingLocks {
             }
         };
 
-        Thread depositThread1 = new Thread(depositTask);
-        Thread depositThread2 = new Thread(depositTask);
+        // 2 for depositing, 2 for withdrawing.
+        // FIXME: as executors are high level construct, you can start and stop them.
+//        ExecutorService executorService = Executors.newFixedThreadPool(4);
+//
+//        executorService.submit(depositTask);
+//        executorService.submit(depositTask);
+//        System.out.println("Balance: " + bankAccountService.getBalance());
+//
+//
+//        executorService.submit(withdrawTask);
+//        executorService.submit(withdrawTask);
+//        System.out.println("Balance: " + bankAccountService.getBalance());
+
+
+        Thread depositThread1 = new Thread(depositTask, "depositT1");
+        Thread depositThread2 = new Thread(depositTask, "depositT2");
         depositThread1.start();
         depositThread2.start();
         depositThread1.join();
